@@ -1,0 +1,10 @@
+Bytes that can be written instead of any opcode and pause the cleo (very useful for decrypting mods you don't want to run but don't know how exactly to decrypt manually, because for example someone used encrypting function generated in C++ and just pasted into cleo):
+
+9F 0A 03 1F 00 DE 0B 03 1F 00
+
+
+
+What they actually are:
+
+0A9F: 31@ = current_thread_pointer 
+0BDE: pause_thread 31@
