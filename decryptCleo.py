@@ -144,10 +144,10 @@ def FYP_XOR_CrossSided(data, starting_offset, length, initial_limiter, initial_l
 
 #FuncProtector_XOR settings
 '''
-f_name = "PizzaBot"
-starting_offset = 104
-length = 1429
-xor_value = 51
+f_name = "CruiseControl"
+starting_offset = 0
+length = 23899
+xor_value = 70
 '''
 
 def FuncProtector_XOR():
@@ -836,6 +836,32 @@ def FPS():
 
 
 
+'''
+f_name = "CruiseControl"
+length = 23899
+starting_offset = 0
+'''
+
+def CruiseControl():
+    data = GetData()
+
+    data = xor(data, 70, starting_offset, length)
+    
+    new_data = ""
+    for i in range(length):
+        if i%2 == 0 and i < length-1:
+            new_data += data[i+1] + data[i]
+    c = ''
+    for i in range(length-1):
+        if i%2 == 1:
+            c = chr(256 + ~ord(new_data[starting_offset + i]))
+        else:
+            c = new_data[starting_offset + i]
+        data += c
+    SaveData(data, "new")
+
+
+#CruiseControl()
 
 
 
